@@ -99,6 +99,39 @@ namespace VendorOrderTracker.Tests
     }
 
     [TestMethod]
+    public void GetOrder_ThirdOrder_ThirdOrderObject()
+    {
+      string orderOneTitle = "Regular Croissant Order";
+      string orderOneDescription = "20 Croissants - $1.00 each";
+      string orderOneDate = "05/04/2021";
+      string deliveryDateOne = "05/16/2021";
+      decimal priceOne = 20.00m;
+      Order orderOne = new Order(orderOneTitle, orderOneDescription, orderOneDate, deliveryDateOne, priceOne);
+      _vendorObject.AddOrder(orderOne);
+
+      string orderTwoTitle = "Small Baguette Order";
+      string orderTwoDescription = "5 Baguettes - $2.00 each";
+      string orderTwoDate = "05/01/2021";
+      string deliveryTwoDate = "05/18/2021";
+      decimal priceTwo = 10.00m;
+      Order orderTwo = new Order(orderTwoTitle, orderTwoDescription, orderTwoDate, deliveryTwoDate, priceTwo);
+      _vendorObject.AddOrder(orderTwo);
+
+      string orderThreeTitle = "Large Muffin Order";
+      string orderThreeDescription = "50 Muffins - $0.75 each";
+      string orderThreeDate = "05/11/2021";
+      string deliveryThreeDate = "05/14/2021";
+      decimal priceThree = 37.50m;
+      Order orderThree = new Order(orderThreeTitle, orderThreeDescription, orderThreeDate, deliveryThreeDate, priceThree);
+      _vendorObject.AddOrder(orderThree);
+
+      int indexOfOrderToGet = 2;
+      Order returnedOrderObject = _vendorObject.GetOrder(indexOfOrderToGet);
+
+      Assert.AreEqual(orderThree, returnedOrderObject);
+    }
+
+    [TestMethod]
     public void GetAllVendors_TwoVendors_TwoVendorDictionary()
     {
       string vendorTwoName = "Bikeeny Caffe";
