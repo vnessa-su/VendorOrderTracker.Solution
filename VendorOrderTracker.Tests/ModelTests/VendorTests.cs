@@ -8,7 +8,7 @@ namespace VendorOrderTracker.Tests
   [TestClass]
   public class VendorTests
   {
-    private Vendor _vendor;
+    private Vendor _vendorObject;
 
     [TestCleanup]
     public void Cleanup()
@@ -23,13 +23,13 @@ namespace VendorOrderTracker.Tests
       string description = "Californian French cafe, bar and restaurant";
       string address = "186 Tremont St, Boston, MA 02116";
       string phoneNumber = "617-466-6600";
-      _vendor = new Vendor(vendorName, description, address, phoneNumber);
+      _vendorObject = new Vendor(vendorName, description, address, phoneNumber);
     }
 
     [TestMethod]
     public void GetAllOrders_NoOrders_EmptyList()
     {
-      List<Order> allVendorOrders = _vendor.GetAllOrders();
+      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
       Assert.AreEqual(0, allVendorOrders.Count);
     }
 
@@ -42,8 +42,8 @@ namespace VendorOrderTracker.Tests
       string deliveryDate = "05/16/2021";
       decimal price = 20.00m;
       Order newOrder = new Order(orderTitle, orderDescription, orderDate, deliveryDate, price);
-      _vendor.AddOrder(newOrder);
-      List<Order> allVendorOrders = _vendor.GetAllOrders();
+      _vendorObject.AddOrder(newOrder);
+      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
       Assert.AreEqual(1, allVendorOrders.Count);
     }
 
@@ -56,9 +56,9 @@ namespace VendorOrderTracker.Tests
       string deliveryDate = "05/16/2021";
       decimal price = 20.00m;
       Order newOrder = new Order(orderTitle, orderDescription, orderDate, deliveryDate, price);
-      _vendor.AddOrder(newOrder);
-      _vendor.ClearOrders();
-      List<Order> allVendorOrders = _vendor.GetAllOrders();
+      _vendorObject.AddOrder(newOrder);
+      _vendorObject.ClearOrders();
+      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
       Assert.AreEqual(0, allVendorOrders.Count);
     }
 
@@ -71,7 +71,7 @@ namespace VendorOrderTracker.Tests
       string deliveryDateOne = "05/16/2021";
       decimal priceOne = 20.00m;
       Order orderOne = new Order(orderOneTitle, orderOneDescription, orderOneDate, deliveryDateOne, priceOne);
-      _vendor.AddOrder(orderOne);
+      _vendorObject.AddOrder(orderOne);
 
       string orderTwoTitle = "Small Baguette Order";
       string orderTwoDescription = "5 Baguettes - $2.00 each";
@@ -79,7 +79,7 @@ namespace VendorOrderTracker.Tests
       string deliveryTwoDate = "05/18/2021";
       decimal priceTwo = 10.00m;
       Order orderTwo = new Order(orderTwoTitle, orderTwoDescription, orderTwoDate, deliveryTwoDate, priceTwo);
-      _vendor.AddOrder(orderTwo);
+      _vendorObject.AddOrder(orderTwo);
 
       string orderThreeTitle = "Large Muffin Order";
       string orderThreeDescription = "50 Muffins - $0.75 each";
@@ -87,12 +87,12 @@ namespace VendorOrderTracker.Tests
       string deliveryThreeDate = "05/14/2021";
       decimal priceThree = 37.50m;
       Order orderThree = new Order(orderThreeTitle, orderThreeDescription, orderThreeDate, deliveryThreeDate, priceThree);
-      _vendor.AddOrder(orderThree);
+      _vendorObject.AddOrder(orderThree);
 
       int indexOfOrderToDelete = 1;
-      _vendor.DeleteOrder(indexOfOrderToDelete);
+      _vendorObject.DeleteOrder(indexOfOrderToDelete);
 
-      List<Order> allVendorOrders = _vendor.GetAllOrders();
+      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
       Order secondOrderAfterDelete = allVendorOrders[1];
       Assert.AreEqual(2, allVendorOrders.Count);
       Assert.AreEqual(orderThreeTitle, secondOrderAfterDelete.Title);
@@ -120,11 +120,27 @@ namespace VendorOrderTracker.Tests
       string phoneNumberTwo = "781-480-4020";
       Vendor vendorTwoObject = new Vendor(vendorTwoName, descriptionTwo, addressTwo, phoneNumberTwo);
 
-      Vendor.DeleteVendor(_vendor.Id);
+      Vendor.DeleteVendor(_vendorObject.Id);
 
       Dictionary<int, Vendor> currentVendors = Vendor.GetAllVendors();
       Assert.AreEqual(1, currentVendors.Count);
-      Assert.IsFalse(currentVendors.ContainsKey(_vendor.Id));
+      Assert.IsFalse(currentVendors.ContainsKey(_vendorObject.Id));
+    }
+
+    [TestMethod]
+    public void GetVendor_VendorTwo_VendorTwoObject()
+    {
+      string vendorTwoName = "Bikeeny Caffe";
+      string descriptionTwo = "Coffee shop serving coffee, sandwiches, and European style pastries, called bikeenies";
+      string addressTwo = "62 Summer Street, Malden, MA 02148";
+      string phoneNumberTwo = "781-480-4020";
+      Vendor vendorTwoObject = new Vendor(vendorTwoName, descriptionTwo, addressTwo, phoneNumberTwo);
+
+      Vendor returnedVendor = Vendor.GetVendor(vendorTwoObject.Id);
+
+      Assert.AreEqual(vendorTwoName, returnedVendor.Name);
+      Assert.AreEqual(addressTwo, returnedVendor.Address);
+      Assert.AreEqual(phoneNumberTwo, returnedVendor.PhoneNumber);
     }
   }
 }
