@@ -8,7 +8,8 @@ namespace VendorOrderTracker.Models
     public string Description {get; set;}
     public string Address {get; set;}
     public string PhoneNumber {get; set;}
-    public static int Id {get; private set;}
+    public int Id {get; private set;}
+    private static int CurrentId {get; set;}
 
     private List<Order> _vendorOrders =  new List<Order>{};
 
@@ -18,7 +19,8 @@ namespace VendorOrderTracker.Models
       Description = description;
       Address = address;
       PhoneNumber = phoneNumber;
-      Id = 0;
+      CurrentId++;
+      Id = CurrentId;
     }
 
     public void ClearOrders()
@@ -33,7 +35,7 @@ namespace VendorOrderTracker.Models
 
     public void AddOrder(Order newOrder)
     {
-
+      _vendorOrders.Add(newOrder);
     }
   }
 }
