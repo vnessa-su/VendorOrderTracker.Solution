@@ -21,6 +21,11 @@ namespace VendorOrderTracker.Models
       Id = 0;
     }
 
+    public void ClearOrders()
+    {
+      _vendorOrders.Clear();
+    }
+
     public void AddOrder(Order newOrder)
     {
 
