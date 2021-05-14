@@ -75,5 +75,17 @@ namespace VendorOrderTracker.Tests
       Assert.AreEqual(2, allVendorOrders.Count);
       Assert.AreEqual(orderThreeTitle, secondOrderAfterDelete.Title);
     }
+
+    [TestMethod]
+    public void GetAllVendors_TwoVendors_TwoVendorDictionary()
+    {
+      string vendorTwoName = "Bikeeny Caffe";
+      string descriptionTwo = "Coffee shop serving coffee, sandwiches, and European style pastries, called bikeenies";
+      string addressTwo = "62 Summer Street, Malden, MA 02148";
+      string phoneNumberTwo = "781-480-4020";
+      Vendor vendorTwoObject = new Vendor(vendorTwoName, descriptionTwo, addressTwo, phoneNumberTwo);
+      Dictionary<int, Vendor> currentVendors = Vendor.GetAllVendors();
+      Assert.AreEqual(2, currentVendors.Count);
+    }
   }
 }
