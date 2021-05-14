@@ -39,5 +39,41 @@ namespace VendorOrderTracker.Tests
       List<Order> allVendorOrders = _vendorObject.GetAllOrders();
       Assert.AreEqual(1, allVendorOrders.Count);
     }
+
+    [TestMethod]
+    public void DeleteOrder_SecondOrderDeletedOfThreeOrders_TwoOrdersInListWithThirdOrderNowSecond()
+    {
+      string orderOneTitle = "Regular Croissant Order";
+      string orderOneDescription = "20 Croissants - $1.00 each";
+      string orderOneDate = "05/04/2021";
+      string deliveryDateOne = "05/16/2021";
+      decimal priceOne = 20.00m;
+      Order orderOne = new Order(orderOneTitle, orderOneDescription, orderOneDate, deliveryDateOne, priceOne);
+      _vendorObject.AddOrder(orderOne);
+
+      string orderTwoTitle = "Small Baguette Order";
+      string orderTwoDescription = "5 Baguettes - $2.00 each";
+      string orderTwoDate = "05/01/2021";
+      string deliveryTwoDate = "05/18/2021";
+      decimal priceTwo = 10.00m;
+      Order orderTwo = new Order(orderTwoTitle, orderTwoDescription, orderTwoDate, deliveryTwoDate, priceTwo);
+      _vendorObject.AddOrder(orderTwo);
+
+      string orderThreeTitle = "Large Muffin Order";
+      string orderThreeDescription = "50 Muffins - $0.75 each";
+      string orderThreeDate = "05/11/2021";
+      string deliveryThreeDate = "05/14/2021";
+      decimal priceThree = 37.50m;
+      Order orderThree = new Order(orderThreeTitle, orderThreeDescription, orderThreeDate, deliveryThreeDate, priceThree);
+      _vendorObject.AddOrder(orderThree);
+
+      int indexOfOrderToDelete = 1;
+      _vendorObject.DeleteOrder(indexOfOrderToDelete);
+
+      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
+      Order secondOrderAfterDelete = allVendorOrders[1];
+      Assert.AreEqual(2, allVendorOrders.Count);
+      Assert.AreEqual(orderThreeTitle, secondOrderAfterDelete.Title);
+    }
   }
 }
