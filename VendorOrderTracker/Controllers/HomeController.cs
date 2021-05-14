@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Template.Controllers
+namespace VendorOrderTracker.Controllers
 {
   public class HomeController : Controller
   {
