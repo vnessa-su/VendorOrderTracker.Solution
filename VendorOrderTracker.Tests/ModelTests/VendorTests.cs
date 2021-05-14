@@ -6,23 +6,30 @@ using VendorOrderTracker.Models;
 namespace VendorOrderTracker.Tests
 {
   [TestClass]
-  public class VendorTests : IDisposable
+  public class VendorTests
   {
-    private static string _vendorName = "Explorateur Cafe";
-    private static string _description = "Californian French cafe, bar and restaurant";
-    private static string _address = "186 Tremont St, Boston, MA 02116";
-    private static string _phoneNumber = "617-466-6600";
-    private Vendor _vendorObject = new Vendor(_vendorName, _description, _address, _phoneNumber);
+    private Vendor vendor;
 
-    public void Dispose()
+    [TestCleanup]
+    public void Cleanup()
     {
-      _vendorObject.ClearOrders();
+      Vendor.ClearVendors();
+    }
+
+    [TestInitialize]
+    public void Initialize()
+    {
+      string vendorName = "Explorateur Cafe";
+      string description = "Californian French cafe, bar and restaurant";
+      string address = "186 Tremont St, Boston, MA 02116";
+      string phoneNumber = "617-466-6600";
+      vendor = new Vendor(vendorName, description, address, phoneNumber);
     }
 
     [TestMethod]
     public void GetAllOrders_NoOrders_EmptyList()
     {
-      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
+      List<Order> allVendorOrders = vendor.GetAllOrders();
       Assert.AreEqual(0, allVendorOrders.Count);
     }
 
@@ -35,8 +42,8 @@ namespace VendorOrderTracker.Tests
       string deliveryDate = "05/16/2021";
       decimal price = 20.00m;
       Order newOrder = new Order(orderTitle, orderDescription, orderDate, deliveryDate, price);
-      _vendorObject.AddOrder(newOrder);
-      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
+      vendor.AddOrder(newOrder);
+      List<Order> allVendorOrders = vendor.GetAllOrders();
       Assert.AreEqual(1, allVendorOrders.Count);
     }
 
@@ -49,7 +56,7 @@ namespace VendorOrderTracker.Tests
       string deliveryDateOne = "05/16/2021";
       decimal priceOne = 20.00m;
       Order orderOne = new Order(orderOneTitle, orderOneDescription, orderOneDate, deliveryDateOne, priceOne);
-      _vendorObject.AddOrder(orderOne);
+      vendor.AddOrder(orderOne);
 
       string orderTwoTitle = "Small Baguette Order";
       string orderTwoDescription = "5 Baguettes - $2.00 each";
@@ -57,7 +64,7 @@ namespace VendorOrderTracker.Tests
       string deliveryTwoDate = "05/18/2021";
       decimal priceTwo = 10.00m;
       Order orderTwo = new Order(orderTwoTitle, orderTwoDescription, orderTwoDate, deliveryTwoDate, priceTwo);
-      _vendorObject.AddOrder(orderTwo);
+      vendor.AddOrder(orderTwo);
 
       string orderThreeTitle = "Large Muffin Order";
       string orderThreeDescription = "50 Muffins - $0.75 each";
@@ -65,12 +72,12 @@ namespace VendorOrderTracker.Tests
       string deliveryThreeDate = "05/14/2021";
       decimal priceThree = 37.50m;
       Order orderThree = new Order(orderThreeTitle, orderThreeDescription, orderThreeDate, deliveryThreeDate, priceThree);
-      _vendorObject.AddOrder(orderThree);
+      vendor.AddOrder(orderThree);
 
       int indexOfOrderToDelete = 1;
-      _vendorObject.DeleteOrder(indexOfOrderToDelete);
+      vendor.DeleteOrder(indexOfOrderToDelete);
 
-      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
+      List<Order> allVendorOrders = vendor.GetAllOrders();
       Order secondOrderAfterDelete = allVendorOrders[1];
       Assert.AreEqual(2, allVendorOrders.Count);
       Assert.AreEqual(orderThreeTitle, secondOrderAfterDelete.Title);
