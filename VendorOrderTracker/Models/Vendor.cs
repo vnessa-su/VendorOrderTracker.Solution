@@ -26,6 +26,11 @@ namespace VendorOrderTracker.Models
       _vendorOrders.Clear();
     }
 
+    public List<Order> GetAllOrders()
+    {
+      return _vendorOrders;
+    }
+
     public void AddOrder(Order newOrder)
     {
 
