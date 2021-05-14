@@ -60,5 +60,10 @@ namespace VendorOrderTracker.Models
     {
       _allVendors.Remove(vendorId);
     }
+
+    public static Vendor GetVendor(int vendorId)
+    {
+      return _allVendors[vendorId];
+    }
   }
 }
