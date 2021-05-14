@@ -48,6 +48,21 @@ namespace VendorOrderTracker.Tests
     }
 
     [TestMethod]
+    public void ClearOrders_OneOrder_EmptyList()
+    {
+      string orderTitle = "Regular Croissant Order";
+      string orderDescription = "20 Croissants - $1.00 each";
+      string orderDate = "05/04/2021";
+      string deliveryDate = "05/16/2021";
+      decimal price = 20.00m;
+      Order newOrder = new Order(orderTitle, orderDescription, orderDate, deliveryDate, price);
+      vendor.AddOrder(newOrder);
+      vendor.ClearOrders();
+      List<Order> allVendorOrders = vendor.GetAllOrders();
+      Assert.AreEqual(0, allVendorOrders.Count);
+    }
+
+    [TestMethod]
     public void DeleteOrder_SecondOrderDeletedOfThreeOrders_TwoOrdersInListWithThirdOrderNowSecond()
     {
       string orderOneTitle = "Regular Croissant Order";
