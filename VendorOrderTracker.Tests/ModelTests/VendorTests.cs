@@ -36,6 +36,8 @@ namespace VendorOrderTracker.Tests
       decimal price = 20.00m;
       Order newOrder = new Order(orderTitle, orderDescription, orderDate, deliveryDate, price);
       _vendorObject.AddOrder(newOrder);
+      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
+      Assert.AreEqual(1, allVendorOrders.Count);
     }
   }
 }
