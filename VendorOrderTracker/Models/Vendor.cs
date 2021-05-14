@@ -55,5 +55,10 @@ namespace VendorOrderTracker.Models
     {
       return _allVendors;
     }
+
+    public static void DeleteVendor(int vendorId)
+    {
+      _allVendors.Remove(vendorId);
+    }
   }
 }
