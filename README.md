@@ -1,10 +1,10 @@
-# _{Application Name}_
+# Vendor and Order Tracker
 
 #### _{Brief description of application},{Date of current version}_
 
 #### To see my live website go to {GH_PAGES_LINK_HERE}!
 
-#### By _**{List of contributors}**_
+#### By Vanessa Su
 
 ## Description
 
@@ -29,17 +29,17 @@ _{This is a detailed description of your application. Give as much detail as nee
 * A text editor like [VS Code](https://code.visualstudio.com/)
 
 ### Installation
-1. Clone the repository: `git clone {PUT_REPO_HERE}`
-2. Navigate to the `{NAME_OF_DIRECTORY}` directory
+1. Clone the repository: `git clone https://github.com/vnessa-su/VendorOrderTracker.Solution.git`
+2. Navigate to the `\VendorOrderTracker.Solution` directory
 3. Open with your preferred text editor to view the code base
 * #### Run the Program
-1. Navigate to the `{NAME_OF_DIRECTORY}` directory
+1. Navigate to the `\VendorOrderTracker` directory
 2. Run `dotnet restore`
 3. Run `dotnet build`
 4. Start the program with `dotnet run`
 5. Open http://localhost:5000/ in your preferred browser
 * #### Run the Tests
-1. Navigate to the `{NAME_OF_DIRECTORY}` directory
+1. Navigate to the `\VendorOrderTracker.Tests` directory
 2. Run `dotnet restore`
 4. Start the tests with `dotnet test`
 
@@ -55,4 +55,4 @@ For any questions or comments, please reach out through GitHub.
 
 [MIT License](license)
 
-Copyright (c) [year] [names]
+Copyright (c) 2021 Vanessa Su
