@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using VendorOrderTracker.Models;
 
 namespace VendorOrderTracker.Tests
@@ -16,6 +17,13 @@ namespace VendorOrderTracker.Tests
     public void Dispose()
     {
       _vendorObject.ClearOrders();
+    }
+
+    [TestMethod]
+    public void GetAllOrders_NoOrders_EmptyList()
+    {
+      List<Order> allVendorOrders = _vendorObject.GetAllOrders();
+      Assert.AreEqual(0, allVendorOrders.Count);
     }
 
     [TestMethod]
