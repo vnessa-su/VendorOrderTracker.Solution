@@ -1,0 +1,26 @@
+@using VendorOrderTracker.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<h1>@Model["vendor"].Name</h1>
+<h2>@Model["vendor"].Description</h2>
+<h3>@Model["vendor"].Address</h3>
+<h3>@Model["vendor"].PhoneNumber</h3>
+
+<ul>
+  @if(@Model["orders"].Count == 0)
+  {
+    <h3>No orders added yet!</h3>
+  }
+
+  @for (int index = 0; index < @Model["orders"].Count; index++)
+  {
+    <li><a href='/vendors/@Model["vendor"].Id/orders/@index'>@Model["orders"][@index].Title @Model["orders"][@index].OrderDate</a></li>
+  }
+</ul>
+
+<p><a href='/vendors/@Model["vendor"].Id/orders/new'>Add Order</a></p>
+<p><a href="/vendors">Vendor List</a></p>
+<p><a href="/">Back Home</a></p>
