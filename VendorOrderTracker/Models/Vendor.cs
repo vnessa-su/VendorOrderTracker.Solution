@@ -46,6 +46,11 @@ namespace VendorOrderTracker.Models
       _vendorOrders.RemoveAt(indexOfOrder);
     }
 
+    public Order GetOrder(int indexOfOrder)
+    {
+      return _vendorOrders[indexOfOrder];
+    }
+
     public static void ClearVendors()
     {
       _allVendors.Clear();
