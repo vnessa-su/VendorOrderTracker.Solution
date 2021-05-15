@@ -1,0 +1,17 @@
+@using VendorOrderTracker.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<h1>@Model["vendor"].Name</h1>
+
+<h2>@Model["order"].Title</h2>
+<p>Description: @Model["order"].Description</p>
+<p>Order Date: @Model["order"].OrderDate</p>
+<p>Delivery Date: @Model["order"].DeliveryDate</p>
+<p>Total Price: @Model["order"].Price</p>
+
+<p><a href='/vendors/@Model["vendor"].Id'>@Model["vendor"].Name - Vendor Page</a></p>
+<p><a href="/vendors">Vendor List</a></p>
+<p><a href="/">Back Home</a></p>
