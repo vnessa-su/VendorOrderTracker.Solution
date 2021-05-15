@@ -7,19 +7,22 @@ namespace VendorOrderTracker.Controllers
   public class OrdersController : Controller
   {
     [HttpGet("/vendors/{vendorId}/orders/new")]
-    public ActionResult New()
+    public ActionResult New(int vendorId)
     {
-      return View();
+      Vendor selectedVendor = Vendor.GetVendor(vendorId);
+      return View(selectedVendor);
     }
 
     [HttpGet("/vendors/{vendorId}/orders/{orderIndex}")]
     public ActionResult Show(int vendorId, int orderIndex)
     {
-      Dictionary<string, object> vendorInformation =  new Dictionary<string, object>();
+      Dictionary<string, object> orderInformation =  new Dictionary<string, object>();
       Vendor selectedVendor = Vendor.GetVendor(vendorId);
       List<Order> vendorOrders = selectedVendor.GetAllOrders();
       Order selectedOrder = vendorOrders[orderIndex];
-      return View(selectedOrder);
+      orderInformation.Add("order", selectedOrder);
+      orderInformation.Add("vendor", selectedVendor);
+      return View(orderInformation);
     }
   }
 }
