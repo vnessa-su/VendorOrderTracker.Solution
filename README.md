@@ -1,18 +1,23 @@
 # Vendor and Order Tracker
 
-#### _{Brief description of application},{Date of current version}_
-
-#### To see my live website go to {GH_PAGES_LINK_HERE}!
+#### Vendor order tracker for Pierre's Bakery.
 
 #### By Vanessa Su
 
 ## Description
 
-_{This is a detailed description of your application. Give as much detail as needed to explain what the application does as well as any other information you want users or other developers to have.}_
+This page allows for Pierre's Bakery to add Vendors to a list and add Orders to those vendors. It includes a splash page that links to the Vendor List and Add Vendor pages. On the Vendor List page, clicking on a vendor name will take you to its page with a list of orders. Clicking on an order will take you to a page with the order details.
 
 ## User Story
 
-* _{As a user I want to be able to...}_
+* View splash page with a welcome message and links to view vendor list or add a new vendor
+* Select `Vendor List` link to view the current list of vendors
+* Select `Add New Vendor` link to add a vendor to the list
+* Submitting new vendor redirects to splash page
+* Select vendor on `Vendor List` page to see orders belonging to that vendor
+* Select `Add Order` link to add an order associated with the vendor
+* Submitting new order redirects to vendor page
+* Select order on the vendor page to see order details
 
 ## Technologies Used
 
@@ -45,7 +50,7 @@ _{This is a detailed description of your application. Give as much detail as nee
 
 ## Known Bugs
 
-_No known bugs_
+* Adding the same vendor or order again will just add a repeat of that vendor or order to the list
 
 ## Contact Information
 
