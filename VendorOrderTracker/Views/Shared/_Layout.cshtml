@@ -2,11 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Pierre's Bakery - Vendor Order Tracker</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/styles.css" type="text/css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&family=Open+Sans&display=swap" rel="stylesheet">
+
+    <title>Pierre's Bakery - Vendor Order Tracker</title>
+    <link rel="icon" href="~/images/favicon.ico">
+    <div class="d-none">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
   </head>
-  <body>
-    @RenderBody()
+  <body id="page-background">
+    <div id="background-overlay">
+      @RenderBody()
+    </div>
   </body>
 </html>
