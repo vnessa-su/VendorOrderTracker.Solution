@@ -4,17 +4,29 @@
 
 <h1>Add New Vendor</h1>
 
-<form action="/vendors" method="post">
-  <label for="vendorName">Vendor Name</label>
-  <input type="text" id="vendorName" name="vendorName">
-  <label for="vendorDescription">Description</label>
-  <input type="text" id="vendorDescription" name="vendorDescription">
-  <label for="vendorAddress">Address</label>
-  <input type="text" id="vendorAddress" name="vendorAddress">
-  <label for="vendorPhoneNumber">Phone Number</label>
-  <input type="text" id="vendorPhoneNumber" name="vendorPhoneNumber">
-  <button type="submit">Add</button>
-</form>
+<div class="page-content container vendor-link form-text py-3 px-4 my-2">
+  <form action="/vendors" method="post">
+    <div class="form-group">
+      <label for="vendorName">Vendor Name</label>
+      <input type="text" id="vendorName" name="vendorName" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="vendorDescription">Description</label>
+      <input type="text" id="vendorDescription" name="vendorDescription" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="vendorAddress">Address</label>
+      <input type="text" id="vendorAddress" name="vendorAddress" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="vendorPhoneNumber">Phone Number</label>
+      <input type="text" id="vendorPhoneNumber" name="vendorPhoneNumber" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary my-2">Add</button>
+  </form>
+</div>
 
-<p><a href="/">Back Home</a></p>
-<p><a href="/vendors">Vendor List</a></p>
+<div class="text-center">
+  <a class="btn btn-secondary btn-lg m-2" href="/vendors">Vendor List</a>
+  <a class="btn btn-secondary btn-lg m-2" href="/">Back Home</a>
+</div>

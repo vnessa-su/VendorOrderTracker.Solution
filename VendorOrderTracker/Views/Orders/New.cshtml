@@ -4,21 +4,35 @@
 
 <h1>Add New Order for @Model.Name</h1>
 
-<form action="/vendors/@Model.Id/orders" method="post">
-  <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
-  <label for="orderTitle">Order Title</label>
-  <input type="text" id="orderTitle" name="orderTitle">
-  <label for="orderDescription">Description</label>
-  <input type="text" id="orderDescription" name="orderDescription">
-  <label for="orderDate">Order Date</label>
-  <input type="text" id="orderDate" name="orderDate">
-  <label for="deliveryDate">Delivery Date</label>
-  <input type="text" id="deliveryDate" name="deliveryDate">
-  <label for="orderPrice">Total Price</label>
-  <input type="text" id="orderPrice" name="orderPrice">
-  <button type="submit">Add</button>
-</form>
+<div class="page-content container vendor-link form-text py-3 px-4 my-2">
+  <form action="/vendors/@Model.Id/orders" method="post">
+    <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
+    <div class="form-group">
+      <label for="orderTitle">Order Title</label>
+      <input type="text" id="orderTitle" name="orderTitle" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="orderDescription">Description</label>
+      <input type="text" id="orderDescription" name="orderDescription" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="orderDate">Order Date</label>
+      <input type="date" id="orderDate" name="orderDate" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="deliveryDate">Delivery Date</label>
+      <input type="date" id="deliveryDate" name="deliveryDate" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="orderPrice">Total Price</label>
+      <input type="text" id="orderPrice" name="orderPrice" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
 
-<p><a href="/vendors/@Model.Id">@Model.Name - Vendor Page</a></p>
-<p><a href="/vendors">Vendor List</a></p>
-<p><a href="/">Back Home</a></p>
+<div class="text-center">
+  <a class="btn btn-secondary btn-lg m-2" href="/vendors/@Model.Id">@Model.Name - Vendor Page</a>
+  <a class="btn btn-secondary btn-lg m-2" href="/vendors">Vendor List</a>
+  <a class="btn btn-secondary btn-lg m-2" href="/">Back Home</a>
+</div>
