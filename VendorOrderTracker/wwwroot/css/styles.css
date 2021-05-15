@@ -4,15 +4,11 @@
   background-attachment: fixed;
 }
 
-#background-overlay {
-  height: 100vh;
-  background-color: rgba(143, 140, 140, 0.2);
-}
-
 h1 {
   font-family: 'Love Ya Like A Sister', cursive;
   color: white;
   mix-blend-mode: difference;
+  text-align: center;
 }
 
 .page-content {
@@ -25,4 +21,5 @@ h1 {
 
 .vendor-link {
   color: lightseagreen;
+  font-weight: bold;
 }
