@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using VendorOrderTracker.Models;
 
@@ -35,6 +36,20 @@ namespace VendorOrderTracker.Controllers
       vendorInformation.Add("vendor", selectedVendor);
       vendorInformation.Add("orders", vendorOrders);
       return View(vendorInformation);
+    }
+
+    [HttpPost("/vendors/{vendorId}/orders")]
+    public ActionResult Create(int vendorId, string orderTitle, string orderDescription, string orderDate, string deliveryDate, string orderPrice)
+    {
+      decimal price = Convert.ToDecimal(orderPrice);
+      Order newOrder = new Order(orderTitle, orderDescription, orderDate, deliveryDate, price);
+      Vendor selectedVendor = Vendor.GetVendor(vendorId);
+      selectedVendor.AddOrder(newOrder);
+      List<Order> vendorOrders = selectedVendor.GetAllOrders();
+      Dictionary<string, object> vendorInformation =  new Dictionary<string, object>();
+      vendorInformation.Add("vendor", selectedVendor);
+      vendorInformation.Add("orders", vendorOrders);
+      return View("Show", vendorInformation);
     }
   }
 }
