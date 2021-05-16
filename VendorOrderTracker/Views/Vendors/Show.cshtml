@@ -4,23 +4,30 @@
   Layout = "_Layout";
 }
 
-<h1>@Model["vendor"].Name</h1>
-<h2>@Model["vendor"].Description</h2>
-<h3>@Model["vendor"].Address</h3>
-<h3>@Model["vendor"].PhoneNumber</h3>
+<h1 class="py-3">@Model["vendor"].Name</h1>
 
-<ul>
-  @if(@Model["orders"].Count == 0)
-  {
-    <h3>No orders added yet!</h3>
-  }
+<div class="vendor-info">
+  <h2>@Model["vendor"].Description</h2>
+  <h3>@Model["vendor"].Address</h3>
+  <h3>@Model["vendor"].PhoneNumber</h3>
+</div>
 
-  @for (int index = 0; index < @Model["orders"].Count; index++)
-  {
-    <li><a href='/vendors/@Model["vendor"].Id/orders/@index'>@Model["orders"][@index].Title @Model["orders"][@index].OrderDate</a></li>
-  }
-</ul>
+<div class="page-content container py-3 px-4">
+  <ul class="list-group list-group-flush">
+    @if(@Model["orders"].Count == 0)
+    {
+      <h3 class="text-warning">No orders added yet!</h3>
+    }
 
-<p><a href='/vendors/@Model["vendor"].Id/orders/new'>Add Order</a></p>
-<p><a href="/vendors">Vendor List</a></p>
-<p><a href="/">Back Home</a></p>
+    @for (int index = 0; index < @Model["orders"].Count; index++)
+    {
+      <li class="list-group-item bg-transparent"><a href='/vendors/@Model["vendor"].Id/orders/@index'>@Model["orders"][@index].Title @Model["orders"][@index].OrderDate</a></li>
+    }
+  </ul>
+</div>
+
+<div class="text-center container py-3 px-4">
+  <a class="btn btn-secondary btn-lg m-2" href='/vendors/@Model["vendor"].Id/orders/new'>Add Order</a>
+  <a class="btn btn-secondary btn-lg m-2" href="/vendors">Vendor List</a>
+  <a class="btn btn-secondary btn-lg m-2" href="/">Back Home</a>
+</div>
