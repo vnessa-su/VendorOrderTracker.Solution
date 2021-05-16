@@ -4,7 +4,7 @@
   background-attachment: fixed;
 }
 
-h1 {
+h1, .vendor-info {
   font-family: 'Love Ya Like A Sister', cursive;
   color: white;
   mix-blend-mode: difference;
@@ -17,6 +17,7 @@ h1 {
   min-height: 350px;
   max-width: 800px;
   border-radius: 10px;
+  text-shadow: 1px 1px black;
 }
 
 .vendor-link {
