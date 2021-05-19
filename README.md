@@ -51,6 +51,7 @@ This page allows for Pierre's Bakery to add Vendors to a list and add Orders to 
 ## Known Bugs
 
 * Adding the same vendor or order again will just add a repeat of that vendor or order to the list
+* User can add empty field Orders and Vendors
 
 ## Contact Information
 
